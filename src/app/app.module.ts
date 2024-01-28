@@ -6,6 +6,14 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './features/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModuleModule } from './shared/modules/material-module/material-module.module';
+import { SharedModule } from './shared/shared.module';
+import { LoginModule } from './features/login/login.module';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,8 +21,18 @@ import { MaterialModuleModule } from './shared/modules/material-module/material-
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    LoginModule,
     MaterialModuleModule,
     BrowserAnimationsModule,
+    SharedModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['http://localhost:3000'],
+        // disallowedRoutes: ['http://example.com/examplebadroute/'],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

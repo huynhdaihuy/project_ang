@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../../components/login-dialog/login-dialog.component';
+import { AuthService } from 'src/app/shared/services/auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -8,9 +10,14 @@ import { LoginDialogComponent } from '../../components/login-dialog/login-dialog
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private authService: AuthService,
+    private route: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '300px',
@@ -27,4 +34,9 @@ export class HomePageComponent implements OnInit {
   //   dialogRef.afterClosed().subscribe(result => {
   //   });
   // }
+  logout() {
+    this.authService.logout();
+    this.route.navigate(['/login']);
+    alert('You had already log out');
+  }
 }
