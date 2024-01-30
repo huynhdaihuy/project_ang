@@ -19,6 +19,11 @@ const routes: Routes = [
       import('./features/login/login.module').then((m) => m.LoginModule),
   },
   {
+    path: 'signup',
+    loadChildren: () =>
+      import('./features/signup/signup.module').then((m) => m.SignupModule),
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },

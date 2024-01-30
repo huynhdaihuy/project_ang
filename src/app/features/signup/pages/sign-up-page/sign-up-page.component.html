@@ -1,0 +1,11 @@
+<h2>Signup</h2>
+<input
+  name="image"
+  type="file"
+  placeholder="File"
+  (change)="handleChangeFile($event)"
+/>
+
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="onSignUp()">Signup</button>
+</div>

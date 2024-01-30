@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  headersConfig = new HttpHeaders({
+    'Content-Type': 'multipart/form-data',
+  });
   constructor(public jwtHelper: JwtHelperService, private http: HttpClient) {}
 
   isAuthenticated(): boolean {
@@ -24,6 +27,11 @@ export class AuthService {
   }
   login(data: any): Observable<any> {
     return this.http.post('http://localhost:3000/api/auth/signin', data);
+  }
+  signup(data: any): Observable<any> {
+    data.user = 'try to fix bug';
+    console.log('🚀 ~ AuthService ~ signup ~ data:', data);
+    return this.http.post('http://localhost:3000/api/user', data);
   }
   logout(): void {
     localStorage.clear();
