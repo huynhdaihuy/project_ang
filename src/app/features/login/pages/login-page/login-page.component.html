@@ -32,3 +32,11 @@
     Login
   </button>
 </div>
+
+<h3>Counter is {{ counter$ | async }}</h3>
+
+<button mat-button (click)="handleDecrement()">Decrement</button>
+
+<button mat-button (click)="handleIncrement()">Increment</button>
+
+<button mat-button (click)="handleResetCounter()">Reset</button>

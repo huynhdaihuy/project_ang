@@ -12,6 +12,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './shared/intercepters/auth.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './store/counter.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffect } from './store/counter.effects';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -32,9 +36,12 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         allowedDomains: ['http://localhost:3000'],
-        // disallowedRoutes: ['http://example.com/examplebadroute/'],
       },
     }),
+    StoreModule.forRoot({
+      counter: counterReducer,
+    }),
+    EffectsModule.forRoot([CounterEffect]),
   ],
   providers: [
     {

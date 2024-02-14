@@ -8,10 +8,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./features/home/home.module').then((m) => m.HomeModule),
-    canActivate: [AuthGuard, RoleGuard],
-    data: {
-      expectedRole: 'user',
-    },
+    // canActivate: [AuthGuard, RoleGuard],
+    // data: {
+    //   expectedRole: 'user',
+    // },
   },
   {
     path: 'login',
@@ -22,6 +22,11 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () =>
       import('./features/signup/signup.module').then((m) => m.SignupModule),
+  },
+  {
+    path: 'chef',
+    loadChildren: () =>
+      import('./features/chef/chef.module').then((m) => m.ChefModule),
   },
   {
     path: '**',

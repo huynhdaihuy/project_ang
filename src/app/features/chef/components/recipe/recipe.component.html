@@ -1,0 +1,69 @@
+<div class="mat-elevation-z8">
+  <h1 class="fw-bold m-5">Recipe Management</h1>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="_id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element._id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="url_image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="element.url_image" class="img-item" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element" class="text-warning">
+        {{ element.price | currency }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sold">
+      <th mat-header-cell *matHeaderCellDef>Sold</th>
+      <td mat-cell *matCellDef="let element" class="text-success">
+        {{ element.sold }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hardness">
+      <th mat-header-cell *matHeaderCellDef>Hardness</th>
+      <td mat-cell *matCellDef="let element" class="fw-bold">
+        {{ element.hardness | titlecase }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef>Time</th>
+      <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button color="accent" (click)="handleUpdateRecipe(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-button
+          color="accent"
+          (click)="handleDeleteRecipe(element._id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
+</div>

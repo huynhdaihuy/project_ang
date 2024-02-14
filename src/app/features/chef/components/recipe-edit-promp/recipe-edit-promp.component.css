@@ -1,0 +1,18 @@
+.form-wrapper {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 700px;
+}
+
+mat-icon:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.text-btn {
+  color: blue;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 10px;
+}
+
