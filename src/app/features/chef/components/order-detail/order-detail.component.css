@@ -1,3 +1,11 @@
+.nav-previous {
+  display: flex;
+  align-items: center;
+  margin: 32px;
+  cursor: pointer;
+  color: red;
+}
+
 .status-label {
   height: 30px;
   display: flex;
