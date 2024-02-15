@@ -28,10 +28,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/chef/chef.module').then((m) => m.ChefModule),
   },
-  {
-    path: '**',
-    redirectTo: '/home',
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: '/home',
+  // },
 ];
 
 @NgModule({

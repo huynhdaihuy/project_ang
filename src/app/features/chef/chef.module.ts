@@ -10,9 +10,11 @@ import { RecipeEditPrompComponent } from './components/recipe-edit-promp/recipe-
 import { FormsModule } from '@angular/forms';
 import { OrderComponent } from './components/order/order.component';
 import { OrderItemComponent } from './components/order/components/order-item/order-item.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { OrderDetailItemComponent } from './components/order-detail/components/order-detail-item/order-detail-item.component';
 
 @NgModule({
-  declarations: [HomeComponent, DashboardComponent, RecipeComponent, RecipeEditPrompComponent, OrderComponent, OrderItemComponent],
+  declarations: [HomeComponent, DashboardComponent, RecipeComponent, RecipeEditPrompComponent, OrderComponent, OrderItemComponent, OrderDetailComponent, OrderDetailItemComponent],
   imports: [CommonModule, ChefRoutingModule, MaterialModuleModule],
 })
 export class ChefModule {}
