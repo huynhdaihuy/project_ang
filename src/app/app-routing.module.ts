@@ -1,37 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './shared/guards/auth-guard.guard';
-import { RoleGuard } from './shared/guards/role-guard.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'overview',
     loadChildren: () =>
-      import('./features/home/home.module').then((m) => m.HomeModule),
-    // canActivate: [AuthGuard, RoleGuard],
-    // data: {
-    //   expectedRole: 'user',
-    // },
+      import('./modules/overview/overview.module').then(
+        (m) => m.OverviewModule
+      ),
   },
   {
-    path: 'login',
+    path: 'goods',
     loadChildren: () =>
-      import('./features/login/login.module').then((m) => m.LoginModule),
+      import('./modules/manage-goods/manage-goods.module').then(
+        (m) => m.ManageGoodsModule
+      ),
   },
-  {
-    path: 'signup',
-    loadChildren: () =>
-      import('./features/signup/signup.module').then((m) => m.SignupModule),
-  },
-  {
-    path: 'chef',
-    loadChildren: () =>
-      import('./features/chef/chef.module').then((m) => m.ChefModule),
-  },
-  // {
-  //   path: '**',
-  //   redirectTo: '/home',
-  // },
 ];
 
 @NgModule({

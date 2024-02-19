@@ -3,53 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './features/home/home.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModuleModule } from './shared/modules/material-module/material-module.module';
-import { SharedModule } from './shared/shared.module';
-import { LoginModule } from './features/login/login.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { JwtModule } from '@auth0/angular-jwt';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthInterceptor } from './shared/intercepters/auth.interceptor';
-import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './store/counter.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { CounterEffect } from './store/counter.effects';
-
-export function tokenGetter() {
-  return localStorage.getItem('access_token');
-}
+import { SideNavComponent } from './layouts/side-nav/side-nav.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { NavItemComponent } from './layouts/components/side-nav/nav-item/nav-item.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    SideNavComponent,
+    HeaderComponent,
+    NavItemComponent
+  ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HomeModule,
-    LoginModule,
-    MaterialModuleModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ['http://localhost:3000'],
-      },
-    }),
-    StoreModule.forRoot({
-      counter: counterReducer,
-    }),
-    EffectsModule.forRoot([CounterEffect]),
+    AppRoutingModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

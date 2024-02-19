@@ -1,11 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
-html,
-body {
-  height: 100%;
-  font-family: "Poppins", sans-serif;
-
+.bg-main {
+  background-color: #f5f7fa;
 }
-body {
-  margin: 0;
+
+.cursor-pointer {
+  cursor: pointer;
 }

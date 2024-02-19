@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+  <div class="row">
+    <div class="col-12"><app-header></app-header></div>
+  </div>
+  <div class="row">
+    <div class="col-3 border border-right">
+      <app-side-nav></app-side-nav>
+    </div>
+    <div class="col-9 p-0">
+      <div class="bg-main h-100 overflow-auto">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
