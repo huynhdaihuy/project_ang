@@ -32,10 +32,12 @@ export class AddGoodsComponent implements OnInit {
       name: [''],
       description: [''],
       image: [''],
-      inventory: this.formBuilder.group({
-        name: [''],
-        quantity: [''],
-      }),
+      inventory: this.formBuilder.array([
+        {
+          name: [''],
+          quantity: [''],
+        },
+      ]),
       category: [''],
       tags: this.formBuilder.array([]),
       price: [''],

@@ -1,0 +1,31 @@
+<div *ngIf="parentForm" [formGroup]="parentForm">
+  <p class="fs-18 fw-500 d-inline">Variants</p>
+  <span class="ms-1 text-primary fw500 cursor-pointer" (click)="addOptions()"
+    >Add new options</span
+  >
+  <div class="form-group" formArrayName="variants">
+    <div *ngFor="let variantGroup of variantsForm.controls; let i = index">
+      <div class="heading-select fs-14">
+        <label class="fw-500">Option {{ i + 1 }}</label>
+      </div>
+      <div [formGroupName]="i">
+        <select
+          class="custom-select mb-3"
+          (change)="changeOptions($event, i)"
+          formControlName="type"
+        >
+          <option *ngFor="let variant of variantsList" [value]="variant">
+            {{ variant }}
+          </option>
+        </select>
+        <textarea
+          class="form-control rounded"
+          cols="30"
+          rows="4"
+          formControlName="detail"
+          (input)="changeDetailOptions($event, i)"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+</div>

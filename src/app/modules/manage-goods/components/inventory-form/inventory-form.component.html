@@ -1,0 +1,18 @@
+<div class="form-group" *ngIf="inventoryForm" [formGroup]="inventoryForm">
+  <div class="heading-select fs-14">
+    <label for="name" class="fw-500">Inventory</label>
+    <span class="ms-1 text-primary fw500 cursor-pointer"
+      >Add new warehouse</span
+    >
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <label for="name" class="fw-500 fs-12">Warehouse</label>
+      <input class="form-control" formControlName="name" type="text" />
+    </div>
+    <div class="col-6">
+      <label for="name" class="fw-500 fs-12">Quantity</label>
+      <input class="form-control" formControlName="quantity" type="number" />
+    </div>
+  </div>
+</div>

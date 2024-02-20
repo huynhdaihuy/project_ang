@@ -28,29 +28,11 @@
           <input class="form-control" formControlName="image" type="file" />
         </div>
 
-        <div class="form-group">
-          <div class="heading-select fs-14">
-            <label for="name" class="fw-500">Inventory</label>
-            <span class="ms-1 text-primary fw500 cursor-pointer"
-              >Add new warehouse</span
-            >
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <label for="name" class="fw-500 fs-12">Warehouse</label>
-              <input class="form-control" formControlName="name" type="text" />
-            </div>
-            <div class="col-6">
-              <label for="name" class="fw-500 fs-12">Quantity</label>
-              <input
-                class="form-control"
-                formControlName="quantity"
-                type="number"
-              />
-            </div>
-          </div>
-        </div>
+        <!-- <app-inventory-form
+          [inventoryForm]="goodsForm.get('inventory')"
+        ></app-inventory-form> -->
       </div>
+
       <div class="col-4 border rounded p-3">
         <p class="fs-18 fw-500">Organize</p>
         <div class="form-group">
@@ -71,31 +53,11 @@
           </select>
         </div>
 
-        <div class="form-group" formArrayName="tags">
-          <div class="heading-select fs-14">
-            <label for="name" class="fw-500">Tags</label>
-            <span
-              class="ms-1 text-primary fw500 cursor-pointer"
-              (click)="addNewTag()"
-              >Add new tag</span
-            >
-          </div>
-          <div *ngFor="let tag of tags.controls; let i = index">
-            <div class="heading-select fs-14">
-              <label class="fw-500">Tag {{ i + 1 }}</label>
-            </div>
-            <div [formGroupName]="i">
-              <select
-                class="custom-select mb-3"
-                (change)="changeTags($event, i)"
-              >
-                <option *ngFor="let tagValue of tagsList" [value]="tagValue">
-                  {{ tagValue }}
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <app-tags-form
+          [parentForm]="goodsForm"
+          [tagsForm]="goodsForm.get('tags')"
+          [tagsList]="tagsList"
+        ></app-tags-form>
 
         <div class="row">
           <div class="col-6">
@@ -120,37 +82,11 @@
           </div>
         </div>
 
-        <p class="fs-18 fw-500 d-inline">Variants</p>
-        <span
-          class="ms-1 text-primary fw500 cursor-pointer"
-          (click)="addOptions()"
-          >Add new options</span
-        >
-        <div class="form-group" formArrayName="variants">
-          <div *ngFor="let variantGroup of variants.controls; let i = index">
-            <div class="heading-select fs-14">
-              <label class="fw-500">Option {{ i + 1 }}</label>
-            </div>
-            <div [formGroupName]="i">
-              <select
-                class="custom-select mb-3"
-                (change)="changeOptions($event, i)"
-                formControlName="type"
-              >
-                <option *ngFor="let variant of variantsList" [value]="variant">
-                  {{ variant }}
-                </option>
-              </select>
-              <textarea
-                class="form-control rounded"
-                cols="30"
-                rows="4"
-                formControlName="detail"
-                (input)="changeDetailOptions($event, i)"
-              ></textarea>
-            </div>
-          </div>
-        </div>
+        <app-variants-form
+          [parentForm]="goodsForm"
+          [variantsForm]="goodsForm.get('variants')"
+          [variantsList]="variantsList"
+        ></app-variants-form>
       </div>
     </div>
     <button class="btn btn-primary" type="submit">Save</button>

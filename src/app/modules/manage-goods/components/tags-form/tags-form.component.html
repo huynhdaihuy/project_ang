@@ -1,0 +1,22 @@
+<div *ngIf="parentForm" [formGroup]="parentForm">
+  <div class="form-group" formArrayName="tags">
+    <div class="heading-select fs-14">
+      <label for="name" class="fw-500">Tags</label>
+      <span class="ms-1 text-primary fw500 cursor-pointer" (click)="addNewTag()"
+        >Add new tag</span
+      >
+    </div>
+    <div *ngFor="let tag of tagsForm.controls; let i = index">
+      <div class="heading-select fs-14">
+        <label class="fw-500">Tag {{ i + 1 }}</label>
+      </div>
+      <div [formGroupName]="i">
+        <select class="custom-select mb-3" (change)="changeTags($event, i)">
+          <option *ngFor="let tagValue of tagsList" [value]="tagValue">
+            {{ tagValue }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
