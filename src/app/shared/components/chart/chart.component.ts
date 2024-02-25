@@ -119,6 +119,9 @@ export class ChartComponent implements OnInit {
         scales: {
           y: {
             beginAtZero: true,
+            ticks: {
+              stepSize: 40,
+            },
           },
         },
       },
