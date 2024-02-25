@@ -16,7 +16,7 @@ import { NavItemComponent } from './layouts/components/side-nav/nav-item/nav-ite
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

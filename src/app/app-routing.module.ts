@@ -16,6 +16,13 @@ const routes: Routes = [
         (m) => m.ManageGoodsModule
       ),
   },
+  {
+    path: 'warehouse',
+    loadChildren: () =>
+      import('./modules/manage-warehouse/manage-warehouse.module').then(
+        (m) => m.ManageWarehouseModule
+      ),
+  },
 ];
 
 @NgModule({

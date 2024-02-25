@@ -1,0 +1,9 @@
+#dochart{
+    max-width: 400px;
+    max-height: 400px;
+    font-weight: bold;
+}
+
+#linechart{
+    width: 400px;
+}

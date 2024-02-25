@@ -20,9 +20,10 @@ export class SideNavComponent implements OnInit {
     {
       title: 'Warehouse Management',
       icon: 'fa-solid fa-warehouse',
+      url: 'warehouse',
     },
     {
-      title: 'Warehouse Management',
+      title: 'Order Management',
       icon: 'fa-regular fa-file',
     },
     {
