@@ -1,0 +1,10 @@
+.wrapper-goods {
+  margin-top: 0.5rem;
+  max-height: 25rem;
+  overflow-y: auto;
+}
+
+.img-goods {
+  width: 30px;
+  height: 30px;
+}

@@ -23,6 +23,13 @@ const routes: Routes = [
         (m) => m.ManageWarehouseModule
       ),
   },
+  {
+    path: 'order',
+    loadChildren: () =>
+      import('./modules/manage-order/manage-order.module').then(
+        (m) => m.ManageOrderModule
+      ),
+  },
 ];
 
 @NgModule({

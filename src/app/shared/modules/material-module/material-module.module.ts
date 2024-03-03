@@ -13,7 +13,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { CommonModule } from '@angular/common';
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -31,6 +32,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
+    CommonModule,
+    MatStepperModule,
   ],
 })
 export class MaterialModuleModule {}

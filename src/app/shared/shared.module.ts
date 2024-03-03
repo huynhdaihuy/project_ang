@@ -11,7 +11,6 @@ import { ChartComponent } from './components/chart/chart.component';
     CommonModule,
     MaterialModuleModule,
     FormsModule,
-    ReactiveFormsModule,
     ChartComponent,
   ],
 })

@@ -25,6 +25,7 @@ export class SideNavComponent implements OnInit {
     {
       title: 'Order Management',
       icon: 'fa-regular fa-file',
+      url:'order'
     },
     {
       title: 'Transport Management',

@@ -1,0 +1,87 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="orderForm" label="Choosing goods for order">
+    <input type="form-control" [(ngModel)]="seachText" />
+    <div
+      *ngFor="let goods of listGoodsData; let i = index"
+      class="p-3 m-3 rounded shadow"
+    >
+      <button
+        [class]="
+          isAddedGoods(goods.id) ? 'btn btn-success p-1' : 'btn btn-primary p-1'
+        "
+        [disabled]="!canAddGoods(i) || isAddedGoods(goods.id)"
+        (click)="addGoods(goods)"
+      >
+        {{ isAddedGoods(goods.id) ? "Added " : "Add" }}
+      </button>
+      <button
+        [disabled]="!isAddedGoods(goods.id)"
+        (click)="removeGoodsGroup(goods.id)"
+        class="btn btn-danger"
+      >
+        Remove
+      </button>
+      <div>
+        <label>Quantity</label>
+        <input type="number" [(ngModel)]="quantity" [id]="'quantity' + i" />
+      </div>
+      <div class="d-flex align-items-center justify-content-start">
+        <img [src]="goods.url_image" style="width: 30px; height: 30px" />
+        <div class="content">
+          <p class="fw-bold fs-6 text-truncate">{{ goods.name }}</p>
+          <p class="fw-bold">
+            Price:
+            <span class="text-primary">{{ goods.price | currency }}</span>
+          </p>
+          <p class="fw-bold text-success">
+            Quantity Available : {{ goods.quantity }}
+          </p>
+        </div>
+        <div class="status-storage">
+          <p>Status storage</p>
+          <div *ngFor="let warehouseData of goods.warehouses">
+            <input
+              (change)="activeGoods = i"
+              [(ngModel)]="warehouse"
+              [value]="warehouseData"
+              [name]="'warehouse' + i"
+              type="radio"
+            />
+            <p>Warehouse :{{ warehouseData.name }}</p>
+            <p>Quantity Available :{{ warehouseData.quantityAvailable }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step *ngIf="orderForm" [stepControl]="orderForm">
+    <ng-template matStepLabel>Summary information order</ng-template>
+    <app-infor-order [parentForm]="orderForm"></app-infor-order>
+  </mat-step>
+  <mat-step *ngIf="orderForm" [stepControl]="orderForm">
+    <form [formGroup]="orderForm">
+      <ng-template matStepLabel>Fill customer information</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          [formControl]="name"
+          placeholder="Last name, First name"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
