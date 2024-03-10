@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="fs-16 fw-600">Shipment data</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table fs-14">
+        <thead>
+          <tr>
+            <th scope="col">Carrier</th>
+            <th scope="col">Region</th>
+            <th scope="col">Method</th>
+            <th scope="col">Value</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dataItem of dataTransport">
+            <td>
+              <span class="text-primary"> {{ dataItem.carrier }}</span>
+            </td>
+            <td>
+              <span class="fw-600"> {{ dataItem.region }}</span>
+            </td>
+            <td>
+              <span> {{ dataItem.method }} </span>
+            </td>
+            <td>
+              <span>{{ dataItem.value | currency }} </span>
+            </td>
+            <td>
+              <span class="fw-550 text-secondary">{{ dataItem.status }} </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

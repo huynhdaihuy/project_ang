@@ -1,0 +1,39 @@
+<table class="table fs-14">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Today</th>
+      <th scope="col">This Week</th>
+      <th scope="col">This Month</th>
+      <th scope="col">This Quater</th>
+      <th scope="col">This Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let section of labelHeader">
+      <tr>
+        <td colspan="6" class="fw-bold">{{ section.label }}</td>
+      </tr>
+      <tr *ngFor="let dataItem of section.data">
+        <td>
+          <span class="ms-3 fw-550"> {{ dataItem.title }}</span>
+        </td>
+        <td>
+          <span> {{ dataItem.valueDay | currency }}</span>
+        </td>
+        <td>
+          <span> {{ dataItem.valueWeek | currency }} </span>
+        </td>
+        <td>
+          <span>{{ dataItem.valueMonth | currency }} </span>
+        </td>
+        <td>
+          <span>{{ dataItem.valueQuarter | currency }} </span>
+        </td>
+        <td>
+          <span> {{ dataItem.valueYear | currency }}</span>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

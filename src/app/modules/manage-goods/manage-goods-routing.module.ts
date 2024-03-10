@@ -5,12 +5,12 @@ import { AddGoodsComponent } from './pages/add-goods/add-goods.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: MangeGoodsPageComponent,
-  },
-  {
     path: 'add',
     component: AddGoodsComponent,
+  },
+  {
+    path: '',
+    component: MangeGoodsPageComponent,
   },
 ];
 

@@ -1,1 +1,73 @@
-<p>overview-page works!</p>
+<div class="container">
+  <div class="row p-2">
+    <div class="col-6 rounded p-3 shadow fw-600">
+      <div class="d-flex align-items-center justify-content-between fs-16">
+        <span>Goods</span>
+        <span class="btn btn-outline-primary fs-12">View statistics</span>
+      </div>
+      <div class="mt-2">
+        <span class="fs-20"> 1878 </span>
+        <span class="text-success fs-12">items(+2.6% )</span>
+      </div>
+    </div>
+    <div class="col-6 rounded p-3 shadow fw-600">
+      <div class="d-flex align-items-center justify-content-between fs-16">
+        <span>Order</span>
+        <span class="btn btn-outline-primary fs-12">View statistics</span>
+      </div>
+      <div class="mt-2">
+        <span class="fs-20"> 526 </span>
+        <span class="text-success fs-12">placed(+2.6% )</span>
+      </div>
+    </div>
+  </div>
+  <div class="row p-2">
+    <div class="col-6 rounded p-3 shadow fw-600">
+      <div class="d-flex align-items-center justify-content-between fs-16">
+        <span>Warehouse</span>
+        <span class="btn btn-outline-primary fs-12" routerLink="warehouse"
+          >View statistics</span
+        >
+      </div>
+      <div class="mt-2">
+        <span class="text-success fs-20"> 6 </span>
+        <span class="text-success fs-12">(+0% )</span>
+      </div>
+    </div>
+    <div class="col-6 rounded p-3 shadow fw-600">
+      <div class="d-flex align-items-center justify-content-between fs-16">
+        <span>Transportation</span>
+        <span class="btn btn-outline-primary fs-12" routerLink="transport"
+          >View statistics</span
+        >
+      </div>
+      <div class="mt-2">
+        <span class="text-success fs-20"> 1267 </span>
+        <span class="text-success fs-12">(+5.6% )</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col-12">
+      <app-overview-statistic></app-overview-statistic>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <p class="fs-20 fw-bold">Operating Cost</p>
+    </div>
+    <div class="col-12">
+      <app-operating-cost-table></app-operating-cost-table>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <p class="fs-20 fw-bold">Revenue Data</p>
+    </div>
+    <div class="col-12">
+      <app-operating-revenue-table></app-operating-revenue-table>
+    </div>
+  </div>
+</div>

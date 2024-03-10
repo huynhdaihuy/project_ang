@@ -1,0 +1,18 @@
+<table class="table fs-14">
+  <thead>
+    <tr>
+      <th scope="col">Location</th>
+      <th scope="col">Order ID</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataWarehouse">
+      <td>{{ data.warehouse }}</td>
+      <td>{{ data.orderId }}</td>
+      <td>{{ data.status }}</td>
+      <td>{{ data.date | date : "short" }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+<table class="table fs-14">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Today</th>
+      <th scope="col">This Week</th>
+      <th scope="col">This Month</th>
+      <th scope="col">This Quater</th>
+      <th scope="col">This Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let label of revenueHeader">
+      <th scope="row" class="label-row">{{ label.title }}</th>
+      <td>{{ label.valueDay | currency }}</td>
+      <td>{{ label.valueWeek | currency }}</td>
+      <td>{{ label.valueMonth | currency }}</td>
+      <td>{{ label.valueQuarter | currency }}</td>
+      <td>{{ label.valueYear | currency }}</td>
+    </tr>
+  </tbody>
+</table>
