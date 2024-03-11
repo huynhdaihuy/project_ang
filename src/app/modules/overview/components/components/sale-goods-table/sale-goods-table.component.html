@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="fs-14 fw-700">Filter</p>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-3">
+      <span class="fs-12 fw-550">Category</span>
+      <select [(ngModel)]="selectedCategory" class="form-control fs-12 fw-550">
+        <option value="" disabled class="text-secondary">
+          Choose category
+        </option>
+        <option *ngFor="let category of listCategory" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-3">
+      <span class="fs-12 fw-550">Warehouse</span>
+      <select [(ngModel)]="selectedWarehouse" class="form-control fs-12 fw-550">
+        <option value="" disabled class="text-secondary">
+          Choose warehouse
+        </option>
+        <option *ngFor="let warehouse of listWarehouse" [value]="warehouse">
+          {{ warehouse }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-2">
+      <span
+        class="fs-12 fw-550 text-danger cursor-pointer"
+        *ngIf="isChangeFilter()"
+        (click)="resetFilter()"
+        ><i class="fa-solid fa-filter-circle-xmark"></i> Remove</span
+      >
+    </div>
+    <div class="col-2">
+      <button class="fs-12 btn btn-outline-primary">
+        <i class="fa-solid fa-magnifying-glass"></i> Search
+      </button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="codeGoods">
+          <th mat-header-cell *matHeaderCellDef>Code ID</th>
+          <td mat-cell *matCellDef="let emp">{{ emp.codeGoods }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>Category</th>
+          <td mat-cell *matCellDef="let emp">{{ emp.category }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="unitsSold">
+          <th mat-header-cell *matHeaderCellDef>Unit Sold</th>
+          <td mat-cell *matCellDef="let emp">{{ emp.unitsSold }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="revenue">
+          <th mat-header-cell *matHeaderCellDef>Revenue</th>
+          <td mat-cell *matCellDef="let emp">{{ emp.revenue | currency }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="profitMargin">
+          <th mat-header-cell *matHeaderCellDef>Profit rate</th>
+          <td mat-cell *matCellDef="let emp">{{ emp.profitMargin }} %</td>
+        </ng-container>
+
+        <ng-container matColumnDef="salesGrowthRate">
+          <th mat-header-cell *matHeaderCellDef>Sale Growth Rate</th>
+          <td mat-cell *matCellDef="let emp">{{ emp.salesGrowthRate }}%</td>
+        </ng-container>
+
+        <ng-container matColumnDef="inventoryTurnover">
+          <th mat-header-cell *matHeaderCellDef>Inventory Turnover</th>
+          <td mat-cell *matCellDef="let emp">{{ emp.inventoryTurnover }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        #paginator
+        [pageSizeOptions]="[5, 10, 15]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,10 @@ import { OrderStatisticPageComponent } from './pages/order-statistic-page/order-
 import { TransportStatisticPageComponent } from './pages/transport-statistic-page/transport-statistic-page.component';
 import { WarehouseStatisticPageComponent } from './pages/warehouse-statistic-page/warehouse-statistic-page.component';
 import { WarehouseStatisticTableComponent } from './components/components/warehouse-statistic-table/warehouse-statistic-table.component';
-
+import { GoodsStatisticPageComponent } from './pages/goods-statistic-page/goods-statistic-page.component';
+import { SaleGoodsTableComponent } from './components/components/sale-goods-table/sale-goods-table.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { BestSaleChartComponent } from './components/components/best-sale-chart/best-sale-chart.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +26,11 @@ import { WarehouseStatisticTableComponent } from './components/components/wareho
     OrderStatisticPageComponent,
     TransportStatisticPageComponent,
     WarehouseStatisticPageComponent,
-    WarehouseStatisticTableComponent
+    WarehouseStatisticTableComponent,
+    GoodsStatisticPageComponent,
+    SaleGoodsTableComponent,
+    BestSaleChartComponent,
   ],
-  imports: [
-    CommonModule,
-    OverviewRoutingModule
-  ]
+  imports: [CommonModule, OverviewRoutingModule, SharedModule],
 })
-export class OverviewModule { }
+export class OverviewModule {}
