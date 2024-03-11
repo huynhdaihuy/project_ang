@@ -15,6 +15,7 @@ import { GoodsStatisticPageComponent } from './pages/goods-statistic-page/goods-
 import { SaleGoodsTableComponent } from './components/components/sale-goods-table/sale-goods-table.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BestSaleChartComponent } from './components/components/best-sale-chart/best-sale-chart.component';
+import { TopSaleTableComponent } from './components/components/top-sale-table/top-sale-table.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BestSaleChartComponent } from './components/components/best-sale-chart/
     GoodsStatisticPageComponent,
     SaleGoodsTableComponent,
     BestSaleChartComponent,
+    TopSaleTableComponent,
   ],
   imports: [CommonModule, OverviewRoutingModule, SharedModule],
 })
