@@ -7,6 +7,8 @@ import { SideNavComponent } from './layouts/side-nav/side-nav.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { NavItemComponent } from './layouts/components/side-nav/nav-item/nav-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     NavItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

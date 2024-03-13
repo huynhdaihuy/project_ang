@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginPageComponent } from './shared/components/login-page/login-page.component';
 
 const routes: Routes = [
   {
@@ -8,6 +9,11 @@ const routes: Routes = [
       import('./modules/overview/overview.module').then(
         (m) => m.OverviewModule
       ),
+  },
+
+  {
+    path: 'login',
+    component: LoginPageComponent,
   },
   {
     path: 'goods',

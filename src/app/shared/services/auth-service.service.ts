@@ -1,65 +1,50 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  headersConfig = new HttpHeaders({
-    'Content-Type': 'multipart/form-data',
-  });
-  constructor(public jwtHelper: JwtHelperService, private http: HttpClient) {}
+  private isAuthenticatedSubject;
+  isAuthenticated$: Observable<boolean>;
+
+  constructor(private http: HttpClient) {
+    const isAuthenticated = Boolean(localStorage.getItem('isAuthenticated'));
+    this.isAuthenticatedSubject = new BehaviorSubject<boolean>(isAuthenticated);
+    this.isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+  }
+
+  private setAuthStatusInLocalStorage(isAuthenticated: boolean): void {
+    if (!isAuthenticated) {
+      localStorage.removeItem('isAuthenticated');
+      return;
+    }
+    localStorage.setItem('isAuthenticated', 'true');
+  }
+
+  signIn(credentials: { username: string; password: string }): Observable<any> {
+    return this.http
+      .post<any>('http://localhost:3000/api/auth/signin', credentials)
+      .pipe(
+        tap((res: any) => {
+          console.log(res);
+          this.isAuthenticatedSubject.next(true);
+          this.setAuthStatusInLocalStorage(true);
+        }),
+        catchError((error) => {
+          console.error('Error logging in:', error);
+          return throwError(() => new Error(error));
+        })
+      );
+  }
+
+  logout() {
+    this.isAuthenticatedSubject.next(false);
+    this.setAuthStatusInLocalStorage(false);
+  }
 
   isAuthenticated(): boolean {
-    const token = localStorage.getItem('accessToken');
-    if (!token) return false;
-    if (this.jwtHelper.isTokenExpired(token)) {
-      return this.handleAccessTokenExpired();
-    }
-    return true;
-  }
-  getInforUser(): any {
-    const token = localStorage.getItem('accessToken');
-    if (!token) return null;
-    return this.jwtHelper.decodeToken(token).user;
-  }
-  login(data: any): Observable<any> {
-    return this.http.post('http://localhost:3000/api/auth/signin', data);
-  }
-  signup(data: any): Observable<any> {
-    data.user = 'try to fix bug';
-    console.log('🚀 ~ AuthService ~ signup ~ data:', data);
-    return this.http.post('http://localhost:3000/api/user', data);
-  }
-  logout(): void {
-    localStorage.clear();
-  }
-  setInforLogin(data: any) {
-    localStorage.setItem('accessToken', data.accessToken);
-    localStorage.setItem('refreshToken', data.user.refreshToken);
-  }
-  handleAccessTokenExpired(): boolean {
-    const refreshToken = localStorage.getItem('refreshToken');
-    if (!refreshToken || this.jwtHelper.isTokenExpired(refreshToken))
-      return false;
-    const user = this.getInforUser();
-    return this.getNewAccessToken(user);
-  }
-  getNewAccessToken(user: any): boolean {
-    this.http
-      .post('http://localhost:3000/api/auth/get-access-token', user)
-      .subscribe({
-        next: (res: any) => {
-          localStorage.setItem('accessToken', res.accessToken);
-          return true;
-        },
-        error: (error) => {
-          console.log(error);
-          return false;
-        },
-      });
-    return true;
+    return this.isAuthenticatedSubject.value;
   }
 }
